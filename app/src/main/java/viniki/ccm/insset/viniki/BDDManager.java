@@ -30,6 +30,7 @@ public class BDDManager {
         nouveauUtilisateur.put("emailUtilisateur", newUtilisateur.getEmailUtilisateur());
         nouveauUtilisateur.put("adresseUtilisateur", newUtilisateur.getAdresseUtilisateur());
         nouveauUtilisateur.put("dateNaissanceUtilisateur", newUtilisateur.getDateNaissanceUtilisateur());
+        nouveauUtilisateur.put("status", "online");
         nouveauUtilisateur.put("password", password);
 
         firebaseFirestore
@@ -77,6 +78,7 @@ public class BDDManager {
                             utilisateur.setDateNaissanceUtilisateur((Date) result.get("dateNaissanceUtilisateur"));
 
                             GlobalVariable.getInstance().setConnectedUtilisateur(utilisateur);
+                            changeStatusUtilisateur(result.getId(), true);
 
                             context.loginSuccess();
                         }
@@ -102,6 +104,22 @@ public class BDDManager {
                         }
                     }
                 });
+    }
+
+    public static void changeStatusUtilisateur(String idUtilisateur, boolean estConnect){
+        Map<String, Object> statusChange = new HashMap<>();
+        if (estConnect){
+            // Connexion
+            statusChange.put("status", "online");
+        }else{
+            // Deconnexion
+            statusChange.put("status", "offline");
+        }
+        firebaseFirestore.collection(NomTableUtilisateur).document(idUtilisateur).update(statusChange);
+    }
+
+    public static void logoutUtilisateur(){
+        changeStatusUtilisateur(GlobalVariable.getInstance().getConnectedUtilisateur().getIdUtilisateur(), false);
     }
 
 }
