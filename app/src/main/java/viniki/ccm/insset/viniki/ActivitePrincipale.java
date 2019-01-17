@@ -1,9 +1,11 @@
 package viniki.ccm.insset.viniki;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -52,5 +54,10 @@ public class ActivitePrincipale extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    public void activeteMap(View view) {
+        Intent mapIntent = new Intent(this, ActiviteMap.class);
+        startActivity(mapIntent);
     }
 }
