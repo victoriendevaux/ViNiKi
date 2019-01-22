@@ -12,6 +12,11 @@ public class Utilisateur {
     private String adresseUtilisateur;
     private Date dateNaissanceUtilisateur;
 
+    // Options
+    private Integer frequenceDeplacement;
+    private Integer porteeVisuel;
+
+
     public String getIdUtilisateur() {
         return idUtilisateur;
     }
@@ -60,4 +65,19 @@ public class Utilisateur {
         this.dateNaissanceUtilisateur = dateNaissanceUtilisateur;
     }
 
+    public Integer getFrequenceDeplacement() {
+        return frequenceDeplacement;
+    }
+
+    public void setFrequenceDeplacement(Integer frequenceDeplacement) {
+        this.frequenceDeplacement = frequenceDeplacement;
+    }
+
+    public Integer getPorteeVisuel() {
+        return porteeVisuel;
+    }
+
+    public void setPorteeVisuel(Integer porteeVisuel) {
+        this.porteeVisuel = porteeVisuel;
+    }
 }

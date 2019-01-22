@@ -17,9 +17,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BDDManager {
-    private static String NomTableUtilisateur = "Utilisateur";
 
     private static FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+
+    // Partie Utilisateur
+
+    private static String NomTableUtilisateur = "Utilisateur";
 
     public static void addUtilisateur(Utilisateur newUtilisateur, String password, final Inscription context){
 
@@ -32,6 +35,9 @@ public class BDDManager {
         nouveauUtilisateur.put("dateNaissanceUtilisateur", newUtilisateur.getDateNaissanceUtilisateur());
         nouveauUtilisateur.put("status", "online");
         nouveauUtilisateur.put("password", password);
+        // Options
+        nouveauUtilisateur.put("frequenceDeplacement", 5);
+        nouveauUtilisateur.put("porteeVisuel", 100);
 
         firebaseFirestore
                 //nom de la base
@@ -76,6 +82,9 @@ public class BDDManager {
                             utilisateur.setEmailUtilisateur((String) result.get("nomUtilisateur"));
                             utilisateur.setAdresseUtilisateur((String) result.get("nomUtilisateur"));
                             utilisateur.setDateNaissanceUtilisateur((Date) result.get("dateNaissanceUtilisateur"));
+                            // Options
+                            utilisateur.setFrequenceDeplacement((Integer) result.get("frequenceDeplacement"));
+                            utilisateur.setPorteeVisuel((Integer) result.get("porteeVisuel"));
 
                             GlobalVariable.getInstance().setConnectedUtilisateur(utilisateur);
                             changeStatusUtilisateur(result.getId(), true);
@@ -122,4 +131,7 @@ public class BDDManager {
         changeStatusUtilisateur(GlobalVariable.getInstance().getConnectedUtilisateur().getIdUtilisateur(), false);
     }
 
+    // Partie Localisation
+
+    private static String NomTableLocalisation = "Localisation";
 }
