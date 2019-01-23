@@ -4,23 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ActivitePrincipale"
-    tools:layout_editor_absoluteY="81dp">
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="148dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="254dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginBottom="61dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Mot de passe"
-        app:layout_constraintBottom_toTopOf="@+id/btn_connect"
-        app:layout_constraintEnd_toStartOf="@+id/txt_password"
-        app:layout_constraintStart_toStartOf="parent"
+    tools:context=".ActivitePrincipale">
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="77dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="83dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="onClickDeconnexion"
+        android:text="Deconnexion"
+        android:textAllCaps="false"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView

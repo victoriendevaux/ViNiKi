@@ -1,19 +1,9 @@
 package viniki.ccm.insset.viniki;
 
-import android.support.annotation.NonNull;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
-
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
-import java.util.Map;
+import android.view.View;
 
 public class ActivitePrincipale extends AppCompatActivity {
 
@@ -52,5 +42,11 @@ public class ActivitePrincipale extends AppCompatActivity {
                     }
                 });
 
+    }
+
+    public void onClickDeconnexion(View view) {
+        BDDManager.logoutUtilisateur();
+        Intent monIntent = new Intent(this, Login.class);
+        startActivity(monIntent);
     }
 }
