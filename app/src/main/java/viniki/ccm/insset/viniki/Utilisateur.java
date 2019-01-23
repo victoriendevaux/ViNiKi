@@ -13,9 +13,10 @@ public class Utilisateur {
     private Date dateNaissanceUtilisateur;
 
     // Options
-    private Integer frequenceDeplacement;
-    private Integer porteeVisuel;
+    private Long frequenceDeplacement;
+    private Long porteeVisuel;
 
+    private Localisation maLocalisation;
 
     public String getIdUtilisateur() {
         return idUtilisateur;
@@ -65,19 +66,27 @@ public class Utilisateur {
         this.dateNaissanceUtilisateur = dateNaissanceUtilisateur;
     }
 
-    public Integer getFrequenceDeplacement() {
+    public Long getFrequenceDeplacement() {
         return frequenceDeplacement;
     }
 
-    public void setFrequenceDeplacement(Integer frequenceDeplacement) {
+    public void setFrequenceDeplacement(Long frequenceDeplacement) {
         this.frequenceDeplacement = frequenceDeplacement;
     }
 
-    public Integer getPorteeVisuel() {
+    public Long getPorteeVisuel() {
         return porteeVisuel;
     }
 
-    public void setPorteeVisuel(Integer porteeVisuel) {
+    public void setPorteeVisuel(Long porteeVisuel) {
         this.porteeVisuel = porteeVisuel;
+    }
+
+    public Localisation getMaLocalisation() {
+        return maLocalisation;
+    }
+
+    public void setMaLocalisation(Localisation maLocalisation) {
+        this.maLocalisation = maLocalisation;
     }
 }

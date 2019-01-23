@@ -12,8 +12,10 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.Source;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BDDManager {
@@ -83,8 +85,10 @@ public class BDDManager {
                             utilisateur.setAdresseUtilisateur((String) result.get("nomUtilisateur"));
                             utilisateur.setDateNaissanceUtilisateur((Date) result.get("dateNaissanceUtilisateur"));
                             // Options
-                            utilisateur.setFrequenceDeplacement((Integer) result.get("frequenceDeplacement"));
-                            utilisateur.setPorteeVisuel((Integer) result.get("porteeVisuel"));
+                            utilisateur.setFrequenceDeplacement((Long) result.get("frequenceDeplacement"));
+                            utilisateur.setPorteeVisuel((Long) result.get("porteeVisuel"));
+
+                            utilisateur.setMaLocalisation(new Localisation());
 
                             GlobalVariable.getInstance().setConnectedUtilisateur(utilisateur);
                             changeStatusUtilisateur(result.getId(), true);
@@ -131,7 +135,31 @@ public class BDDManager {
         changeStatusUtilisateur(GlobalVariable.getInstance().getConnectedUtilisateur().getIdUtilisateur(), false);
     }
 
+    // TODO
+    public static List<String> getUtilisateursOnline(){
+        List<String> tabIdUtilisateur = new ArrayList<String>();
+        return tabIdUtilisateur;
+    }
+
     // Partie Localisation
 
     private static String NomTableLocalisation = "Localisation";
+
+    // TODO
+    public static List<Localisation> getLoclisationsUtilisateurs(List<String> tabIdUtilisateur){
+        List<Localisation> tabLocalisation = new ArrayList<Localisation>();
+        return tabLocalisation;
+    }
+    // TODO
+    public static void changeLocalisationUtilisateur(){
+        Map<String, Object> newLocalisation = new HashMap<>();
+
+        newLocalisation.put("longitude", GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().getLongitude());
+        newLocalisation.put("latitude", GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().getLatitude());
+
+        firebaseFirestore
+                .collection(NomTableLocalisation)
+                .document(GlobalVariable.getInstance().getConnectedUtilisateur().getIdUtilisateur())
+                .set(newLocalisation);
+    }
 }

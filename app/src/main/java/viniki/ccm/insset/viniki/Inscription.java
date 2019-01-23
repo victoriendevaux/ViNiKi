@@ -76,6 +76,7 @@ public class Inscription extends AppCompatActivity {
     public void inscriptionSuccess(String idUtilisateur) {
 
         newUtilisateur.setIdUtilisateur(idUtilisateur);
+        newUtilisateur.setMaLocalisation(new Localisation());
 
         GlobalVariable.getInstance().setConnectedUtilisateur(newUtilisateur);
 
