@@ -1,0 +1,79 @@
+{
+  "project_info": {
+    "project_number": "299025715046",
+    "firebase_url": "https://viniki.firebaseio.com",
+    "project_id": "viniki",
+    "storage_bucket": "viniki.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:299025715046:android:c54cb6e3ac29456d",
+        "android_client_info": {
+          "package_name": "viniki.ccm.insset.viniki"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "299025715046-0gvikfp6kp0c1itjum4f70ppc4e96v63.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "viniki.ccm.insset.viniki",
+            "certificate_hash": "452d75a7326444f454b037326f8530ff95e9c4bc"
+          }
+        },
+        {
+          "client_id": "299025715046-1i6l3odj14s4gq5oucak55r5e4kffpgt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "viniki.ccm.insset.viniki",
+            "certificate_hash": "d5e54349d37d5e7015d391fb26fdbb0c3dd42b03"
+          }
+        },
+        {
+          "client_id": "299025715046-h95abnk56dqenokdctmiptp36vtkngq1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "viniki.ccm.insset.viniki",
+            "certificate_hash": "e9fb390909f5cdb265d337f5688d23f23947957c"
+          }
+        },
+        {
+          "client_id": "299025715046-g0eq4o9f7i4phkttqof2vrnj7099ip26.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "viniki.ccm.insset.viniki",
+            "certificate_hash": "ce5ff2a3f52a27c9011722467a36eb53b34ebbfd"
+          }
+        },
+        {
+          "client_id": "299025715046-oo1258bmv1facnfch6618eo4qu7eg47j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDHMAMuusGoxtlsp83_jVfeF9wP6A8LBFk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "299025715046-oo1258bmv1facnfch6618eo4qu7eg47j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

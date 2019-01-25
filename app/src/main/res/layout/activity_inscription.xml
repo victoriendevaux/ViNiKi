@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Inscription">
+    <Button
+        android:id="@+id/bt_login"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="onClickLogin"
+        android:text="S'identifier"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toTopOf="@+id/tb_nom"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_inscriptionSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:onClick="onClickEnregistrerInscription"
+        android:text="Inscription"
+        android:textAllCaps="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/tb_nom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nom"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/tb_prenom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bt_login" />
+
+    <EditText
+        android:id="@+id/tb_prenom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Prénom"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/tb_email"
+        app:layout_constraintStart_toStartOf="@+id/tb_nom"
+        app:layout_constraintTop_toBottomOf="@+id/tb_nom" />
+
+    <EditText
+        android:id="@+id/tb_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toTopOf="@+id/tb_adresse"
+        app:layout_constraintStart_toStartOf="@+id/tb_prenom"
+        app:layout_constraintTop_toBottomOf="@+id/tb_prenom" />
+
+    <EditText
+        android:id="@+id/tb_dateNaissance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Date de Naissance"
+        android:inputType="date"
+        app:layout_constraintStart_toStartOf="@+id/tb_adresse"
+        app:layout_constraintTop_toBottomOf="@+id/tb_adresse" />
+
+    <EditText
+        android:id="@+id/tb_adresse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Adresse"
+        android:inputType="textPostalAddress"
+        app:layout_constraintBottom_toTopOf="@+id/tb_dateNaissance"
+        app:layout_constraintStart_toStartOf="@+id/tb_email"
+        app:layout_constraintTop_toBottomOf="@+id/tb_email" />
+
+    <EditText
+        android:id="@+id/tb_passwordLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Mot de passe"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/tb_repassword"
+        app:layout_constraintStart_toStartOf="@+id/tb_repassword"
+        app:layout_constraintTop_toBottomOf="@+id/tb_dateNaissance" />
+
+    <EditText
+        android:id="@+id/tb_repassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="82dp"
+        android:ems="10"
+        android:hint="Confirmation"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tb_dateNaissance"
+        app:layout_constraintTop_toBottomOf="@+id/tb_passwordLogin" />
+</android.support.constraint.ConstraintLayout>
