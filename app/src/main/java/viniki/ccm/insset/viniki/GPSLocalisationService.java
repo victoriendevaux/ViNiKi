@@ -14,13 +14,11 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
-import java.util.logging.ConsoleHandler;
-
 public class GPSLocalisationService extends Service {
 
     private LocationListener listener;
     private LocationManager locationManager;
-//    private static ActiviteMap activiteMap = null;
+    private static MapsActivity activiteMap = null;
 
     public GPSLocalisationService() {
     }
@@ -41,11 +39,10 @@ public class GPSLocalisationService extends Service {
                 GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().setLongitude(location.getLongitude());
                 GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().setLatitude(location.getLatitude());
                 // TODO
-//                if(activiteMap != null){
-//                    LatLng positionActuel = new LatLng(getLatitude(), getLongitude());
-//                    googleMap.getmMap().animateCamera(CameraUpdateFactory.newLatLngZoom(positionActuel, 15f));
-//                    googleMap.actualisationMarker();
-//                }
+                if(activiteMap != null){
+                    // L'utilisateur se trouve sur la map.
+                    BDDManager.getUtilisateursOnline(activiteMap);
+                }
 
                 BDDManager.changeLocalisationUtilisateur();
                 //Log.i("LPK_LOK_Listener", "" + location.getLongitude() + " / " + location.getLatitude());
@@ -75,8 +72,9 @@ public class GPSLocalisationService extends Service {
             // TODO: Si pas les permissions
             return;
         }
-        //GlobalVariable.getInstance().getConnectedUtilisateur().getFrequenceDeplacement()*1000
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 0, listener);
+
+        // TODO : Faire fonction permettant de récupérer le temps (en seconde) en prenant en compte la batterie. || BoiteAOutils.getTemps()...
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, GlobalVariable.getInstance().getConnectedUtilisateur().getFrequenceDeplacement()*1000, 0, listener);
 
     }
 
@@ -92,7 +90,7 @@ public class GPSLocalisationService extends Service {
 //        return activiteMap;
 //    }
 //
-//    public static void setActiviteMap(ActiviteMap activiteMap) {
-//        GPSLocalisationService.activiteMap = activiteMap;
-//    }
+    public static void setActiviteMap(MapsActivity activiteMap) {
+        GPSLocalisationService.activiteMap = activiteMap;
+    }
 }

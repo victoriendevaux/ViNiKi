@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.Source;
 
@@ -135,10 +136,29 @@ public class BDDManager {
         changeStatusUtilisateur(GlobalVariable.getInstance().getConnectedUtilisateur().getIdUtilisateur(), false);
     }
 
-    // TODO
-    public static List<String> getUtilisateursOnline(){
-        List<String> tabIdUtilisateur = new ArrayList<String>();
-        return tabIdUtilisateur;
+    // TODO : Passer le context MapActivite
+    public static void getUtilisateursOnline(final MapsActivity context){
+        Task<QuerySnapshot> taskQuery = firebaseFirestore
+                .collection(NomTableUtilisateur)
+                .whereEqualTo("status", "online")
+                .get(Source.DEFAULT).addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        List<String> tabIdUtilisateur = new ArrayList<String>();
+                        for(int i = 0; i < task.getResult().size(); i++){
+
+                            DocumentSnapshot result = task.getResult().getDocuments().get(i);
+
+                            if(result.getId() != GlobalVariable.getInstance().getConnectedUtilisateur().getIdUtilisateur()){
+                                // Pas l'utilisateur en cours
+                                tabIdUtilisateur.add(result.getId());
+                            }
+
+                        }
+
+                        getLocalisationsUtilisateurs(tabIdUtilisateur, context);
+                    }
+                });
     }
 
     // Partie Localisation
@@ -146,9 +166,36 @@ public class BDDManager {
     private static String NomTableLocalisation = "Localisation";
 
     // TODO
-    public static List<Localisation> getLoclisationsUtilisateurs(List<String> tabIdUtilisateur){
-        List<Localisation> tabLocalisation = new ArrayList<Localisation>();
-        return tabLocalisation;
+    public static void getLocalisationsUtilisateurs(final List<String> tabIdUtilisateur, final MapsActivity context){
+            firebaseFirestore
+                    .collection(NomTableLocalisation)
+                    .get(Source.DEFAULT)
+                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                         @Override
+                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                             List<Localisation> tabLocalisation = new ArrayList<Localisation>();
+
+                             for (QueryDocumentSnapshot unResult : task.getResult()){
+                                 if(!unResult.getId().equals(GlobalVariable.getInstance().getConnectedUtilisateur().getIdUtilisateur()) && tabIdUtilisateur.contains(unResult.getId())){
+                                     // TODO :
+                                     Log.i("LPK_GetLoK", "Vrai ! " + unResult.getId());
+                                     Log.i("LPK_GetLoK", "LONG ! " + unResult.get("longitude"));
+                                     Log.i("LPK_GetLoK", "LATI ! " + unResult.get("latitude"));
+                                     Localisation laLoc = new Localisation();
+                                     laLoc.setLatitude((double) unResult.get("latitude"));
+                                     laLoc.setLongitude((double) unResult.get("longitude"));
+                                     tabLocalisation.add(laLoc);
+                                 }
+                                 else{
+                                     Log.i("LPK_GetLoK", "Faux ! " + unResult.getId());
+                                 }
+                             }
+
+                             // TODO : Contexte mapActivite.actualise les personnes visibles. (tabLocalisation)
+
+                             context.rafraichirPositionUtilisateurs(tabLocalisation);
+                         }
+                    });
     }
     // TODO
     public static void changeLocalisationUtilisateur(){

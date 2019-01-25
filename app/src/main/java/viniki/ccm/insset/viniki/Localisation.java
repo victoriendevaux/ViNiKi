@@ -1,5 +1,8 @@
 package viniki.ccm.insset.viniki;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Localisation {
 
     private double longitude;
@@ -35,5 +38,16 @@ public class Localisation {
         result = 2 * Math.atan2(Math.sqrt(result), Math.sqrt(1-result));
         result = R * result;
         return result*1000;
+    }
+
+    public List<Localisation> localisationsProcheDeMoi(List<Localisation> localisationUtilisateurs){
+        // TODO
+        List<Localisation> tabLocAPorte = new ArrayList<Localisation>();
+        for (Localisation uneLoc: localisationUtilisateurs) {
+            if (this.getDistanceWithOtherLocalisation(uneLoc) <= GlobalVariable.getInstance().getConnectedUtilisateur().getPorteeVisuel()){
+                tabLocAPorte.add(uneLoc);
+            }
+        }
+        return tabLocAPorte;
     }
 }

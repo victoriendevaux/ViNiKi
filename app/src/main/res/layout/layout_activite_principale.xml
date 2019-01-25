@@ -19,6 +19,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <Button
+        android:id="@+id/btn_viewMap"
+        android:layout_width="77dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="83dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginTop="40dp"
+        android:onClick="onClickVoirMap"
+        android:text="Voir la carte"
+        android:textAllCaps="false"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

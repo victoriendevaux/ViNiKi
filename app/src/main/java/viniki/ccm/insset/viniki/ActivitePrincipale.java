@@ -29,4 +29,9 @@ public class ActivitePrincipale extends AppCompatActivity {
         Intent monIntent = new Intent(this, Login.class);
         startActivity(monIntent);
     }
+
+    public void onClickVoirMap(View view) {
+        Intent monItent = new Intent(this, MapsActivity.class);
+        startActivity(monItent);
+    }
 }
