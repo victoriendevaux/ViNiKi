@@ -136,7 +136,6 @@ public class BDDManager {
         changeStatusUtilisateur(GlobalVariable.getInstance().getConnectedUtilisateur().getIdUtilisateur(), false);
     }
 
-    // TODO : Passer le context MapActivite
     public static void getUtilisateursOnline(final MapsActivity context){
         Task<QuerySnapshot> taskQuery = firebaseFirestore
                 .collection(NomTableUtilisateur)
@@ -165,7 +164,7 @@ public class BDDManager {
 
     private static String NomTableLocalisation = "Localisation";
 
-    // TODO
+
     public static void getLocalisationsUtilisateurs(final List<String> tabIdUtilisateur, final MapsActivity context){
             firebaseFirestore
                     .collection(NomTableLocalisation)
@@ -177,7 +176,7 @@ public class BDDManager {
 
                              for (QueryDocumentSnapshot unResult : task.getResult()){
                                  if(!unResult.getId().equals(GlobalVariable.getInstance().getConnectedUtilisateur().getIdUtilisateur()) && tabIdUtilisateur.contains(unResult.getId())){
-                                     // TODO :
+                                     //
                                      Log.i("LPK_GetLoK", "Vrai ! " + unResult.getId());
                                      Log.i("LPK_GetLoK", "LONG ! " + unResult.get("longitude"));
                                      Log.i("LPK_GetLoK", "LATI ! " + unResult.get("latitude"));
@@ -191,13 +190,11 @@ public class BDDManager {
                                  }
                              }
 
-                             // TODO : Contexte mapActivite.actualise les personnes visibles. (tabLocalisation)
-
                              context.rafraichirPositionUtilisateurs(tabLocalisation);
                          }
                     });
     }
-    // TODO
+
     public static void changeLocalisationUtilisateur(){
         Map<String, Object> newLocalisation = new HashMap<>();
 

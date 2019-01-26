@@ -38,7 +38,7 @@ public class GPSLocalisationService extends Service {
                 Log.i("LPK_LOK_Listener", "" + location.getLongitude() + " / " + location.getLatitude());
                 GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().setLongitude(location.getLongitude());
                 GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().setLatitude(location.getLatitude());
-                // TODO
+
                 if(activiteMap != null){
                     // L'utilisateur se trouve sur la map.
                     BDDManager.getUtilisateursOnline(activiteMap);
@@ -46,6 +46,8 @@ public class GPSLocalisationService extends Service {
 
                 BDDManager.changeLocalisationUtilisateur();
                 //Log.i("LPK_LOK_Listener", "" + location.getLongitude() + " / " + location.getLatitude());
+
+                // Mettre à jour le temps de raffraichissement...
             }
 
             @Override
@@ -73,8 +75,7 @@ public class GPSLocalisationService extends Service {
             return;
         }
 
-        // TODO : Faire fonction permettant de récupérer le temps (en seconde) en prenant en compte la batterie. || BoiteAOutils.getTemps()...
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, GlobalVariable.getInstance().getConnectedUtilisateur().getFrequenceDeplacement()*1000, 0, listener);
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, BoiteAOutils.getTempsRafraichissement(this), 0, listener);
 
     }
 
@@ -86,11 +87,8 @@ public class GPSLocalisationService extends Service {
         }
     }
 
-//    public static ActiviteMap getActiviteMap() {
-//        return activiteMap;
-//    }
-//
     public static void setActiviteMap(MapsActivity activiteMap) {
         GPSLocalisationService.activiteMap = activiteMap;
     }
+
 }

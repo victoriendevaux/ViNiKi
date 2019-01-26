@@ -13,6 +13,7 @@ public class ActivitePrincipale extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_activite_principale);
         Log.i("LPK_LOK_Listener", "AvantStart");
+//        GPSLocalisationService.setContext(this);
         startService(new Intent(this, GPSLocalisationService.class));
         Log.i("LPK_LOK_Listener", "ApresStart");
 //        GPSLocalisationService.setActiviteMap(null);

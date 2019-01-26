@@ -41,7 +41,6 @@ public class Localisation {
     }
 
     public List<Localisation> localisationsProcheDeMoi(List<Localisation> localisationUtilisateurs){
-        // TODO
         List<Localisation> tabLocAPorte = new ArrayList<Localisation>();
         for (Localisation uneLoc: localisationUtilisateurs) {
             if (this.getDistanceWithOtherLocalisation(uneLoc) <= GlobalVariable.getInstance().getConnectedUtilisateur().getPorteeVisuel()){
