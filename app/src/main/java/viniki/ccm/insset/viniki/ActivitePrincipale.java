@@ -35,4 +35,9 @@ public class ActivitePrincipale extends AppCompatActivity {
         Intent monItent = new Intent(this, MapsActivity.class);
         startActivity(monItent);
     }
+
+    public void onClickParam(View view) {
+        Intent monItent = new Intent(this, ParametreActivity.class);
+        startActivity(monItent);
+    }
 }

@@ -27,6 +27,7 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        BoiteAOutils.verifperm(this);
         login = (EditText) findViewById(R.id.tb_login);
         mdp = (EditText) findViewById(R.id.tb_passwordLogin);
     }

@@ -20,7 +20,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_viewMap" />
+        app:layout_constraintTop_toBottomOf="@+id/goParam" />
 
     <Button
         android:id="@+id/btn_viewMap"
@@ -46,6 +46,22 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_viewMap"
         app:layout_constraintEnd_toEndOf="@+id/btn_viewMap"
         app:layout_constraintStart_toStartOf="@+id/btn_viewMap"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/goParam"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="282dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginBottom="67dp"
+        android:onClick="onClickParam"
+        android:text="Parametre"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_logout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
