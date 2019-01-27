@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grisclair"
+    tools:context=".ActivitePrincipale"
+    tools:layout_editor_absoluteY="81dp">
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="65dp"
+        android:onClick="onClickDeconnexion"
+        android:text="Deconnexion"
+        android:textAllCaps="false"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_viewMap" />
+
+    <Button
+        android:id="@+id/btn_viewMap"
+        android:layout_width="100dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="157dp"
+        android:onClick="onClickVoirMap"
+        android:text="Voir la carte"
+        android:textAllCaps="false"
+        android:textSize="10sp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_logout"
+        app:layout_constraintEnd_toEndOf="@+id/btn_logout"
+        app:layout_constraintStart_toStartOf="@+id/btn_logout"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="103dp"
+        android:layout_marginBottom="69dp"
+        android:text="@string/TitreApp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_viewMap"
+        app:layout_constraintEnd_toEndOf="@+id/btn_viewMap"
+        app:layout_constraintStart_toStartOf="@+id/btn_viewMap"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
