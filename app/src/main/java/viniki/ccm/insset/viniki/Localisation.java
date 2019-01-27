@@ -37,6 +37,7 @@ public class Localisation {
         double result = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(this.getLatitude())) * Math.cos(deg2rad(loc.getLatitude())) * Math.sin(dLon/2) * Math.sin(dLon/2);
         result = 2 * Math.atan2(Math.sqrt(result), Math.sqrt(1-result));
         result = R * result;
+        int test = 0;
         return result*1000;
     }
 

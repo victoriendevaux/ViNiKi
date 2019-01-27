@@ -1,5 +1,6 @@
 package viniki.ccm.insset.viniki;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -29,6 +30,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         login = (EditText) findViewById(R.id.tb_login);
         mdp = (EditText) findViewById(R.id.tb_passwordLogin);
+        BoiteAOutils.verifperm(this);
     }
 
     public void onClickInscription(View view) {

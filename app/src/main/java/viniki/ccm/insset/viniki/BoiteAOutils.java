@@ -1,12 +1,22 @@
 package viniki.ccm.insset.viniki;
 
+import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.LocationManager;
 import android.os.BatteryManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import static android.content.Context.BATTERY_SERVICE;
+import static android.support.v4.content.ContextCompat.getSystemService;
 
-public class BoiteAOutils {
+public class BoiteAOutils extends AppCompatActivity {
+
+    private static final int id_demande_permission = 123;
+
     public static String crypteMotDePasse(String mdp){
         return mdp;
     }
@@ -28,5 +38,32 @@ public class BoiteAOutils {
         tempsRafraichissement = 2*tempsRafraichissement - (5000 * lvlBattery);
         Log.i("LPK_Temps", tempsRafraichissement.toString());
         return tempsRafraichissement;
+    }
+
+
+
+    // permission
+    public static void verifperm(Context context) {
+        if (
+                !(
+                        ActivityCompat.checkSelfPermission(
+                                context, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                                &&
+                                ActivityCompat.checkSelfPermission(
+                                        context, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                                &&
+                                ActivityCompat.checkSelfPermission(
+                                        context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED
+                ))
+        {
+            ActivityCompat.requestPermissions((Activity) context,
+                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
+                            Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE}
+                    ,id_demande_permission );
+            return;
+        }
+
+        LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+
     }
 }
