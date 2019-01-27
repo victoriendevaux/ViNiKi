@@ -160,6 +160,18 @@ public class BDDManager {
                 });
     }
 
+    // ParametreActivity context,
+    public static void updateParametresUtilisateur(Long frequence, Long distance){
+        Map<String, Object> parametres = new HashMap<>();
+        parametres.put("frequenceDeplacement", frequence);
+        parametres.put("porteeVisuel", distance);
+        firebaseFirestore.collection(NomTableUtilisateur).document(GlobalVariable.getInstance().getConnectedUtilisateur().getIdUtilisateur()).update(parametres);
+
+        // Update Utilisateur en cours
+        GlobalVariable.getInstance().getConnectedUtilisateur().setFrequenceDeplacement(frequence);
+        GlobalVariable.getInstance().getConnectedUtilisateur().setPorteeVisuel(distance);
+    }
+
     // Partie Localisation
 
     private static String NomTableLocalisation = "Localisation";
