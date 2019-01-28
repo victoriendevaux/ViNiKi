@@ -39,8 +39,8 @@ public class BDDManager {
         nouveauUtilisateur.put("status", "online");
         nouveauUtilisateur.put("password", password);
         // Options
-        nouveauUtilisateur.put("frequenceDeplacement", 5);
-        nouveauUtilisateur.put("porteeVisuel", 100);
+        nouveauUtilisateur.put("frequenceDeplacement", newUtilisateur.getFrequenceDeplacement());
+        nouveauUtilisateur.put("porteeVisuel", newUtilisateur.getPorteeVisuel());
 
         firebaseFirestore
                 //nom de la base

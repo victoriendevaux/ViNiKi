@@ -61,7 +61,8 @@ public class Inscription extends AppCompatActivity {
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-
+            newUtilisateur.setFrequenceDeplacement((long) 2);
+            newUtilisateur.setPorteeVisuel((long) 500);
             BDDManager.addUtilisateur(newUtilisateur, BoiteAOutils.crypteMotDePasse(mdp.getText().toString()), this);
         }else {
             Toast.makeText(this, "Le mot de passe et la vérification doivent être identique.", Toast.LENGTH_SHORT).show();

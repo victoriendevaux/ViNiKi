@@ -34,8 +34,8 @@ public class ParametreActivity extends AppCompatActivity {
         baseTemspMaj = GlobalVariable.getInstance().getConnectedUtilisateur().getFrequenceDeplacement();
         baseDistance = GlobalVariable.getInstance().getConnectedUtilisateur().getPorteeVisuel();
 
-        tempsMAJPosition.setText("Temps de mise à jour des postions en seconde (entre 1 et 5) Actuel : "+baseTemspMaj);
-        distanceTexte.setText("Distance maximum pour voire les autres (entre 100 et 1000) Actuel : "+baseDistance);
+        tempsMAJPosition.setText("Temps de mise à jour des postions (entre 1s et 5s) Actuel : "+baseTemspMaj);
+        distanceTexte.setText("Distance maximum pour voir les autres (entre 100m et 1000m) Actuel : "+baseDistance);
 
         tempsMaj.setText(String.valueOf(baseTemspMaj));
         distanceET.setText(String.valueOf(baseDistance));
