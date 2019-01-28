@@ -37,6 +37,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             return;
         }
         MapManager.getLaMap().setMyLocationEnabled(true);
+        LatLng positionActuel = new LatLng(GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().getLatitude(), GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().getLongitude());
+        MapManager.getLaMap().animateCamera(CameraUpdateFactory.newLatLngZoom(positionActuel, 15f));
     }
 
     @Override

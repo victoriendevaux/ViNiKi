@@ -33,7 +33,7 @@ public class MapManager {
     public static void ActualiseMap(List<Utilisateur> localisationUtilisateurs){
         clearLaMap();
         LatLng positionActuel = new LatLng(GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().getLatitude(), GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().getLongitude());
-        getLaMap().animateCamera(CameraUpdateFactory.newLatLngZoom(positionActuel, 15f));
+        getLaMap().animateCamera(CameraUpdateFactory.newLatLng(positionActuel));
 
         for (Utilisateur loc : localisationUtilisateurs) {
             LatLng position = new LatLng(loc.getMaLocalisation().getLatitude(), loc.getMaLocalisation().getLongitude());
