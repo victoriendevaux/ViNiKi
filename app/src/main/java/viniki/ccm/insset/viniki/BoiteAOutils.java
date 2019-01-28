@@ -12,7 +12,7 @@ import android.util.Log;
 import static android.content.Context.BATTERY_SERVICE;
 
 public class BoiteAOutils {
-    private static final int id_demande_permission = 423625;
+    private static final int id_demande_permission = 4236;
 
     public static String crypteMotDePasse(String mdp){
         return mdp;

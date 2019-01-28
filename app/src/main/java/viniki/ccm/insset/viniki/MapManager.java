@@ -38,7 +38,7 @@ public class MapManager {
 
         for (Utilisateur loc : localisationUtilisateurs) {
             LatLng position = new LatLng(loc.getMaLocalisation().getLatitude(), loc.getMaLocalisation().getLongitude());
-            // TODO : Remplacer ICI par nom prenom utilisateur
+
             laMap.addMarker(new MarkerOptions().position(position).title(loc.getNomUtilisateur() + " " + loc.getPrenomUtilisateur()));
         }
     }

@@ -46,7 +46,6 @@ public class Inscription extends AppCompatActivity {
     }
 
     public void emailCheck(){
-        Toast.makeText(this, mdp.getText().toString(), Toast.LENGTH_SHORT).show();
 
         if(mdp.getText().toString().equals(reMdp.getText().toString())){
             Toast.makeText(this, reMdp.getText().toString() + " OK !", Toast.LENGTH_SHORT).show();
