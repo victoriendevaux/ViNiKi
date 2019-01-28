@@ -4,6 +4,8 @@ import java.io.File;
 import java.util.Collection;
 import java.util.Date;
 
+import io.grpc.okhttp.internal.Util;
+
 public class Utilisateur {
     private String idUtilisateur;
     private String nomUtilisateur;
@@ -88,5 +90,16 @@ public class Utilisateur {
 
     public void setMaLocalisation(Localisation maLocalisation) {
         this.maLocalisation = maLocalisation;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if ((obj!=null) && (obj.getClass()==Utilisateur.class))
+        {
+            if(((Utilisateur) obj).getIdUtilisateur().equals(this.getIdUtilisateur())){
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -32,7 +32,7 @@ public class BoiteAOutils {
 // Récupére le poucentage de battery actuellement possédé.
         Integer lvlBattery = getBattery(context) / 100;
 
-        tempsRafraichissement = 2*tempsRafraichissement - (5000 * lvlBattery);
+        tempsRafraichissement = 2*tempsRafraichissement - (tempsRafraichissement * lvlBattery);
         Log.i("LPK_Temps", tempsRafraichissement.toString());
         return tempsRafraichissement;
     }

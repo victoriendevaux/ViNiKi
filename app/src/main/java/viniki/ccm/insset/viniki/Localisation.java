@@ -40,10 +40,10 @@ public class Localisation {
         return result*1000;
     }
 
-    public List<Localisation> localisationsProcheDeMoi(List<Localisation> localisationUtilisateurs){
-        List<Localisation> tabLocAPorte = new ArrayList<Localisation>();
-        for (Localisation uneLoc: localisationUtilisateurs) {
-            if (this.getDistanceWithOtherLocalisation(uneLoc) <= GlobalVariable.getInstance().getConnectedUtilisateur().getPorteeVisuel()){
+    public List<Utilisateur> localisationsProcheDeMoi(List<Utilisateur> localisationUtilisateurs){
+        List<Utilisateur> tabLocAPorte = new ArrayList<Utilisateur>();
+        for (Utilisateur uneLoc: localisationUtilisateurs) {
+            if (this.getDistanceWithOtherLocalisation(uneLoc.getMaLocalisation()) <= GlobalVariable.getInstance().getConnectedUtilisateur().getPorteeVisuel()){
                 tabLocAPorte.add(uneLoc);
             }
         }

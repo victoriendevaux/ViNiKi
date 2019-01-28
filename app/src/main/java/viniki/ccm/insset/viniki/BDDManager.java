@@ -143,14 +143,25 @@ public class BDDManager {
                 .get(Source.DEFAULT).addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        List<String> tabIdUtilisateur = new ArrayList<String>();
+                        List<Utilisateur> tabIdUtilisateur = new ArrayList<Utilisateur>();
                         for(int i = 0; i < task.getResult().size(); i++){
 
                             DocumentSnapshot result = task.getResult().getDocuments().get(i);
 
                             if(result.getId() != GlobalVariable.getInstance().getConnectedUtilisateur().getIdUtilisateur()){
                                 // Pas l'utilisateur en cours
-                                tabIdUtilisateur.add(result.getId());
+                                Utilisateur newUtilisateur = new Utilisateur();
+                                newUtilisateur.setIdUtilisateur(result.getId());
+                                newUtilisateur.setNomUtilisateur((String) result.get("nomUtilisateur"));
+                                newUtilisateur.setPrenomUtilisateur((String) result.get("prenomUtilisateur"));
+                                newUtilisateur.setEmailUtilisateur((String) result.get("nomUtilisateur"));
+                                newUtilisateur.setAdresseUtilisateur((String) result.get("nomUtilisateur"));
+                                newUtilisateur.setDateNaissanceUtilisateur((Date) result.get("dateNaissanceUtilisateur"));
+                                // Options
+                                newUtilisateur.setFrequenceDeplacement((Long) result.get("frequenceDeplacement"));
+                                newUtilisateur.setPorteeVisuel((Long) result.get("porteeVisuel"));
+
+                                tabIdUtilisateur.add(newUtilisateur);
                             }
 
                         }
@@ -177,25 +188,33 @@ public class BDDManager {
     private static String NomTableLocalisation = "Localisation";
 
 
-    public static void getLocalisationsUtilisateurs(final List<String> tabIdUtilisateur, final MapsActivity context){
+    public static void getLocalisationsUtilisateurs(final List<Utilisateur> tabIdUtilisateur, final MapsActivity context){
             firebaseFirestore
                     .collection(NomTableLocalisation)
                     .get(Source.DEFAULT)
                     .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                          @Override
                          public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                             List<Localisation> tabLocalisation = new ArrayList<Localisation>();
+                             List<Utilisateur> tabLocalisation = new ArrayList<Utilisateur>();
 
                              for (QueryDocumentSnapshot unResult : task.getResult()){
-                                 if(!unResult.getId().equals(GlobalVariable.getInstance().getConnectedUtilisateur().getIdUtilisateur()) && tabIdUtilisateur.contains(unResult.getId())){
-                                     //
+                                 Utilisateur lUtilisateur = new Utilisateur();
+                                 lUtilisateur.setIdUtilisateur(unResult.getId());
+
+                                 if(!unResult.getId().equals(GlobalVariable.getInstance().getConnectedUtilisateur().getIdUtilisateur()) && tabIdUtilisateur.contains(lUtilisateur)){
+                                     int pos = tabIdUtilisateur.indexOf(lUtilisateur);
+
+                                     Log.i("LPK_Position", String.valueOf(pos));
                                      Log.i("LPK_GetLoK", "Vrai ! " + unResult.getId());
                                      Log.i("LPK_GetLoK", "LONG ! " + unResult.get("longitude"));
                                      Log.i("LPK_GetLoK", "LATI ! " + unResult.get("latitude"));
                                      Localisation laLoc = new Localisation();
                                      laLoc.setLatitude((double) unResult.get("latitude"));
                                      laLoc.setLongitude((double) unResult.get("longitude"));
-                                     tabLocalisation.add(laLoc);
+
+                                     lUtilisateur = tabIdUtilisateur.get(pos);
+                                     lUtilisateur.setMaLocalisation(laLoc);
+                                     tabLocalisation.add(lUtilisateur);
                                  }
                                  else{
                                      Log.i("LPK_GetLoK", "Faux ! " + unResult.getId());

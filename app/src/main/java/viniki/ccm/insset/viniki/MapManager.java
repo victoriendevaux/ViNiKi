@@ -30,15 +30,16 @@ public class MapManager {
         laMap.clear();
     }
 
-    public static void ActualiseMap(List<Localisation> localisationUtilisateurs){
+    public static void ActualiseMap(List<Utilisateur> localisationUtilisateurs){
         Log.i("LPK_GetLoK", "ActuMap");
         clearLaMap();
         LatLng positionActuel = new LatLng(GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().getLatitude(), GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().getLongitude());
         getLaMap().animateCamera(CameraUpdateFactory.newLatLngZoom(positionActuel, 15f));
 
-        for (Localisation loc : localisationUtilisateurs) {
-            LatLng position = new LatLng(loc.getLatitude(), loc.getLongitude());
-            laMap.addMarker(new MarkerOptions().position(position).title("ICI"));
+        for (Utilisateur loc : localisationUtilisateurs) {
+            LatLng position = new LatLng(loc.getMaLocalisation().getLatitude(), loc.getMaLocalisation().getLongitude());
+            // TODO : Remplacer ICI par nom prenom utilisateur
+            laMap.addMarker(new MarkerOptions().position(position).title(loc.getNomUtilisateur() + " " + loc.getPrenomUtilisateur()));
         }
     }
 }

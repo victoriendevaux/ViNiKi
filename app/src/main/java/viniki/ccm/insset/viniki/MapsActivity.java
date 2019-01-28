@@ -62,7 +62,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onBackPressed();
     }
 
-    public void rafraichirPositionUtilisateurs(List<Localisation> localisationUtilisateurs){
+    public void rafraichirPositionUtilisateurs(List<Utilisateur> localisationUtilisateurs){
         Log.i("LPK_GetLoK", "Rafraichir");
         MapManager.ActualiseMap(GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().localisationsProcheDeMoi(localisationUtilisateurs));
     }
