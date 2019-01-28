@@ -49,8 +49,8 @@ public class BDDManager {
                 .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentReference> task) {
-                        Log.i("Ajoute_Map_Activite", "Add OK");
-                        Log.i("Ajoute_Map_Activite", task.getResult().getId());
+//                        Log.i("Ajoute_Map_Activite", "Add OK");
+//                        Log.i("Ajoute_Map_Activite", task.getResult().getId());
                         context.inscriptionSuccess(task.getResult().getId());
                     }
                 })
@@ -58,7 +58,7 @@ public class BDDManager {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.i("Ajoute_Map_Activite", "Add Echec");
+//                        Log.i("Ajoute_Map_Activite", "Add Echec");
                         context.inscriptionEchec();
                     }
                 });
@@ -204,10 +204,6 @@ public class BDDManager {
                                  if(!unResult.getId().equals(GlobalVariable.getInstance().getConnectedUtilisateur().getIdUtilisateur()) && tabIdUtilisateur.contains(lUtilisateur)){
                                      int pos = tabIdUtilisateur.indexOf(lUtilisateur);
 
-                                     Log.i("LPK_Position", String.valueOf(pos));
-                                     Log.i("LPK_GetLoK", "Vrai ! " + unResult.getId());
-                                     Log.i("LPK_GetLoK", "LONG ! " + unResult.get("longitude"));
-                                     Log.i("LPK_GetLoK", "LATI ! " + unResult.get("latitude"));
                                      Localisation laLoc = new Localisation();
                                      laLoc.setLatitude((double) unResult.get("latitude"));
                                      laLoc.setLongitude((double) unResult.get("longitude"));
@@ -215,9 +211,6 @@ public class BDDManager {
                                      lUtilisateur = tabIdUtilisateur.get(pos);
                                      lUtilisateur.setMaLocalisation(laLoc);
                                      tabLocalisation.add(lUtilisateur);
-                                 }
-                                 else{
-                                     Log.i("LPK_GetLoK", "Faux ! " + unResult.getId());
                                  }
                              }
 

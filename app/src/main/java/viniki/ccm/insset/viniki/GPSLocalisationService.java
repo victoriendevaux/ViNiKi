@@ -30,12 +30,10 @@ public class GPSLocalisationService extends Service {
 
     @Override
     public void onCreate() {
-        Log.i("LPK_LOK_Listener", "onCreate");
         listener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
 
-                Log.i("LPK_LOK_Listener", "" + location.getLongitude() + " / " + location.getLatitude());
                 GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().setLongitude(location.getLongitude());
                 GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().setLatitude(location.getLatitude());
 
@@ -45,8 +43,6 @@ public class GPSLocalisationService extends Service {
                 }
 
                 BDDManager.changeLocalisationUtilisateur();
-                //Log.i("LPK_LOK_Listener", "" + location.getLongitude() + " / " + location.getLatitude());
-
                 // Mettre à jour le temps de raffraichissement...
             }
 

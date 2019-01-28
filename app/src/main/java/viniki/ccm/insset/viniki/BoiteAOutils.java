@@ -22,7 +22,6 @@ public class BoiteAOutils {
         Integer lvlBattery = -1;
         BatteryManager bm = (BatteryManager)context.getSystemService(BATTERY_SERVICE);
         lvlBattery = bm.getIntProperty(BatteryManager.BATTERY_PROPERTY_CAPACITY);
-        Log.i("LPK_Battery", lvlBattery.toString());
         return lvlBattery;
     }
     // Récupére le temps en ms de raffraichissement en fonction de l'Utilisateur et du niveau de battery.
@@ -33,7 +32,6 @@ public class BoiteAOutils {
         Integer lvlBattery = getBattery(context) / 100;
 
         tempsRafraichissement = 2*tempsRafraichissement - (tempsRafraichissement * lvlBattery);
-        Log.i("LPK_Temps", tempsRafraichissement.toString());
         return tempsRafraichissement;
     }
 

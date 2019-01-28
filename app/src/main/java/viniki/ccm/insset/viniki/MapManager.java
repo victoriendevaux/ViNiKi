@@ -31,7 +31,6 @@ public class MapManager {
     }
 
     public static void ActualiseMap(List<Utilisateur> localisationUtilisateurs){
-        Log.i("LPK_GetLoK", "ActuMap");
         clearLaMap();
         LatLng positionActuel = new LatLng(GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().getLatitude(), GlobalVariable.getInstance().getConnectedUtilisateur().getMaLocalisation().getLongitude());
         getLaMap().animateCamera(CameraUpdateFactory.newLatLngZoom(positionActuel, 15f));

@@ -48,7 +48,7 @@ public class Inscription extends AppCompatActivity {
     public void emailCheck(){
 
         if(mdp.getText().toString().equals(reMdp.getText().toString())){
-            Toast.makeText(this, reMdp.getText().toString() + " OK !", Toast.LENGTH_SHORT).show();
+
             newUtilisateur = new Utilisateur();
             newUtilisateur.setNomUtilisateur((nom.getText()).toString());
             newUtilisateur.setPrenomUtilisateur((prenom.getText()).toString());
@@ -64,7 +64,7 @@ public class Inscription extends AppCompatActivity {
 
             BDDManager.addUtilisateur(newUtilisateur, BoiteAOutils.crypteMotDePasse(mdp.getText().toString()), this);
         }else {
-            Toast.makeText(this, reMdp.getText().toString() + " PERDU !", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Le mot de passe et la vérification doivent être identique.", Toast.LENGTH_SHORT).show();
         }
     }
 

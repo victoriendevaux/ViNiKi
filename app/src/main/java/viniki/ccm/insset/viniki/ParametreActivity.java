@@ -40,8 +40,6 @@ public class ParametreActivity extends AppCompatActivity {
         tempsMaj.setText(String.valueOf(baseTemspMaj));
         distanceET.setText(String.valueOf(baseDistance));
 
-//        Temps de mise à jour des postions en seconde (entre 1 et 5)
-
     }
 
     public void onClickUpdate(View view) {
@@ -52,14 +50,14 @@ public class ParametreActivity extends AppCompatActivity {
                 long frequence = valeurTempsMaj;
                 long distance = valeurDistance;
                 BDDManager.updateParametresUtilisateur(frequence, distance);
-                Toast.makeText(this,  "Modification effectué.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this,  "Modifications effectuées.", Toast.LENGTH_LONG).show();
                 Intent monItent = new Intent(this, ActivitePrincipale.class);
                 startActivity(monItent);
             }else {
-                Toast.makeText(this,  " L'une des valeurs saisie n'est pas bonne.", Toast.LENGTH_LONG).show();
+                Toast.makeText(this,  "L'une des valeurs saisie n'est pas bonne.", Toast.LENGTH_LONG).show();
             }
         }else {
-            Toast.makeText(this,  " L'une des valeurs saisie n'est pas bonne.", Toast.LENGTH_LONG).show();
+            Toast.makeText(this,  "L'une des valeurs saisie n'est pas bonne.", Toast.LENGTH_LONG).show();
         }
     }
 }
